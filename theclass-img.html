@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE CLASS Catalogue (Image Viewer)</title>
+  <style>
+    :root { --gold:#f1d38b; }
+    body { margin:0; background:#000; color:#fff; font-family:'Inter','Noto Sans KR',sans-serif; }
+    .nav { position:sticky; top:0; z-index:10; background:#111; border-bottom:1px solid var(--gold); padding:12px; text-align:center;}
+    .nav a { color:var(--gold); text-decoration:none; margin:0 10px; }
+    .wrap { max-width:1080px; margin:0 auto; padding:10px 10px 40px; }
+    .page { display:block; width:100%; height:auto; margin:0 0 8px; border:0; background:#111; }
+    .skeleton {
+      width:100%; aspect-ratio: 16/9; background:linear-gradient(90deg,#111 25%,#1a1a1a 37%,#111 63%);
+      background-size:400% 100%; animation: shimmer 1.4s infinite; margin:0 0 8px;
+    }
+    @keyframes shimmer { 0%{background-position:100% 0} 100%{background-position:0 0} }
+    .top-btn { position:fixed; right:14px; bottom:18px; background:#111; border:1px solid var(--gold); color:#fff; border-radius:999px; padding:10px 14px; text-decoration:none; }
+    @media (max-width:768px){ .wrap{padding:8px} }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">← Back to Menu</a> |
+    <a href="bullet-img.html" style="color:#fff">View BULLET Catalogue →</a>
+  </div>
+
+  <div class="wrap" id="viewer"></div>
+  <a class="top-btn" href="#">↑ Top</a>
+
+  <script>
+    const totalPages = 28; // ✅ THE CLASS 페이지 수로 변경
+    const base = "img/theclass/page-"; 
+    const viewer = document.getElementById('viewer');
+
+    const makeBlock = () => {
+      const ph = document.createElement('div');
+      ph.className = 'skeleton';
+      return ph;
+    };
+
+    async function loadPage(n, mount){
+      const src = `${base}${String(n).padStart(2,'0')}.webp`;
+      const img = document.createElement('img');
+      img.loading='lazy'; img.decoding='async'; img.alt=`Page ${n}`;
+      img.className='page'; img.src=src;
+      img.addEventListener('load', ()=> mount.replaceWith(img));
+      img.addEventListener('error', ()=> mount.remove());
+    }
+
+    for (let i=1;i<=totalPages;i++){
+      const ph = makeBlock(); viewer.appendChild(ph);
+      const obs = new IntersectionObserver((ents,ob)=>{
+        ents.forEach(ent=>{ if(ent.isIntersecting){ loadPage(i,ph); ob.disconnect(); } });
+      }, { rootMargin:'600px' });
+      obs.observe(ph);
+    }
+  </script>
+</body>
+</html>
