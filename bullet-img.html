@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BULLET Catalogue (Image Viewer)</title>
+  <title>THE CLASS Catalogue (Image Viewer)</title>
   <style>
     :root { --gold:#f1d38b; }
     body { margin:0; background:#000; color:#fff; font-family:'Inter','Noto Sans KR',sans-serif; }
@@ -20,14 +20,14 @@
 <body>
   <div class="nav">
     <a href="index.html">← Back to Menu</a> |
-    <a href="theclass-img.html" style="color:#fff">View THE CLASS Catalogue →</a>
+    <a href="bullet-img.html" style="color:#fff">View BULLET Catalogue →</a>
   </div>
 
   <div class="wrap" id="viewer"></div>
   <a class="top-btn" href="#">↑ Top</a>
 
   <script>
-    const base = "img/bullet/page-";
+    const base = "img/theclass/page-"; // 루트에 / 안 붙임 (Pages 하위 경로 안전)
     const exts = [".webp",".jpg",".jpeg",".png"];
     const viewer = document.getElementById("viewer");
 
@@ -53,6 +53,7 @@
       return null;
     }
 
+    // 1번부터 차례로 탐색, 연속 3번 실패하면 종료
     (async () => {
       let n = 1, misses = 0;
       while (misses < 3 && n < 500){
