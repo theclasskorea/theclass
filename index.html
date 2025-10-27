@@ -27,11 +27,11 @@
 
     h1 {
       font-size: 30px;
-      color: #f1d38b; /* 골드 */
+      color: #fff; /* 흰색으로 변경 */
       font-weight: 700;
       margin-bottom: 50px;
       letter-spacing: 0.5px;
-      text-shadow: 0 0 10px rgba(241,211,139,0.3);
+      text-shadow: 0 0 10px rgba(241,211,139,0.3); /* 은은한 골드빛 그림자 */
       animation: slideDown 1.2s ease-out;
     }
 
@@ -60,18 +60,9 @@
       box-shadow: 0 0 25px rgba(241,211,139,0.6);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes fadeUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
     .bg-circle, .bg-circle2 {
       position: absolute;
@@ -90,7 +81,7 @@
   <div class="bg-circle2"></div>
 
   <div class="container">
-    <h1>✔️ Select the brand catalogue to view 👇</h1>
+    <h1> Select the brand catalogue to view 👇</h1>
     <div class="btn-box">
       <a href="theclass.html">THE CLASS Catalogue</a>
       <a href="bullet.html">BULLET Catalogue</a>
