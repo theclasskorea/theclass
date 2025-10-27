@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>THE CLASS | Catalogue Viewer</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: #000;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #f1d38b; /* 골드 */
+      font-weight: 700;
+      margin-bottom: 50px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(241,211,139,0.3);
+      animation: slideDown 1.2s ease-out;
+    }
+
+    .btn-box {
+      display: flex;
+      gap: 40px;
+      animation: fadeUp 2s ease-in-out;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid #f1d38b;
+      border-radius: 10px;
+      padding: 15px 50px;
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      font-size: 17px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(241,211,139,0.15);
+    }
+
+    a:hover {
+      background: #f1d38b;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(241,211,139,0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .bg-circle, .bg-circle2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(241,211,139,0.25), transparent 70%);
+      filter: blur(100px);
+      z-index: 1;
+    }
+    .bg-circle { top: -200px; left: -200px; }
+    .bg-circle2 { bottom: -200px; right: -200px; }
+  </style>
+</head>
+<body>
+  <div class="bg-circle"></div>
+  <div class="bg-circle2"></div>
+
+  <div class="container">
+    <h1>✔️ Select the brand catalogue to view</h1>
+    <div class="btn-box">
+      <a href="theclass.html">THE CLA
